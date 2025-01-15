@@ -4,6 +4,7 @@ const HomePage = () => {
   return (
     <Box>
       <Heading>Welcome to the Interview Bot Home Page!</Heading>
+      <Heading>Welcome to the Interview Bot Home Page!</Heading>
     </Box>
   );
 };
