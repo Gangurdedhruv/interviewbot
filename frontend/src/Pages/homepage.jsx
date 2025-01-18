@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Heading, Input, Button } from '@chakra-ui/react';
 import * as pdfjs from 'pdfjs-dist/webpack';
 import '../../CSS/Header.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
 const HomePage = () => {
+
+  useEffect(() => {
+    pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+  }, [])
+
   const [keywords, setKeywords] = useState([]);
 
   const handleFileUpload = async (event) => {
