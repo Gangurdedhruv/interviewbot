@@ -7,6 +7,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   optimizeDeps: {
-    include: ['pdfjs-dist/build/pdf'],
+    exclude: ['pdfjs-dist'],
   },
 });
