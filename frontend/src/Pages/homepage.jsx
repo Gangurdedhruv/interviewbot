@@ -4,7 +4,7 @@ import * as pdfjs from 'pdfjs-dist/webpack';
 import '../../CSS/Header.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI("AIzaSyDSpnVFPJz0oX9HyJKOrz1Tl74fObqSPrI");
+const genAI = new GoogleGenerativeAI("");
 
 const HomePage = () => {
   useEffect(() => {
