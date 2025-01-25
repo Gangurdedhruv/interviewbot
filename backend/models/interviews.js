@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Schema
 
-const interviewSchema = mongoose.Schema({
+const interviewSchema = new mongoose.Schema({
     questions: {
         type: [String],
         required: true
@@ -19,8 +19,6 @@ const interviewSchema = mongoose.Schema({
         ref: 'User',
         required: true
     }
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
 
-modules.exports = mongoose.model('Interview', interviewSchema);
+export default mongoose.model('Interview', interviewSchema);

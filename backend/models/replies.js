@@ -1,19 +1,17 @@
 import mongoose from 'mongoose';
 const { ObjectId } = mongoose.Schema
 
-const replySchema = mongoose.Schema({
+const replySchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
         trim: true
     },
-    author: {
+    userId: {
         type: ObjectId,
         ref: 'User',
         required: true
     }
-}, {
-    timestamps: true
-});
+}, { timestamps: true });
 
-modules.exports = mongoose.model('Reply', replySchema);
+export default mongoose.model('Reply', replySchema);
