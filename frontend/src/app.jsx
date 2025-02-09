@@ -3,6 +3,7 @@ import Registration from "./Pages/registration";
 import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import HomePage from "./Pages/Homepage";
+import Community from "./Pages/community";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/homepage" element={<HomePage />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
   );
 }
