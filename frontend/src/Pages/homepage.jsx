@@ -4,7 +4,8 @@ import * as pdfjs from 'pdfjs-dist/webpack';
 import '../../CSS/Header.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI("");
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
+
 
 const HomePage = () => {
   useEffect(() => {
@@ -32,7 +33,7 @@ const HomePage = () => {
         const keywordsList = [
           'Python', 'Java', 'JavaScript', 'C', 'C++', 'C#', 'Go', 'Ruby', 'Kotlin', 'Swift', 'R', 'PHP', 'TypeScript', 'Scala', 'Perl', 'Rust',
           'HTML', 'CSS', 'React', 'Angular', 'Vue.js', 'Node.js', 'Django', 'Flask', 'SQL', 'MongoDB', 'Firebase',
-          'TensorFlow', 'PyTorch', 'AWS', 'Docker', 'Linux', 'Git', 'Selenium', 'Algorithms', 'Data Structures'
+          'TensorFlow', 'PyTorch', 'AWS', 'Docker', 'Linux', 'Git', 'Selenium', 'Algorithms', 'Data Structures','AI'
         ];
 
         const words = textContent
