@@ -21,7 +21,7 @@ export const getAllPosts = async(req, res) => {
         const response = await Post.find({})
         return res.json({
             success: true,
-            message: response
+            data: response
         });
     } catch(err) {
         return res.status(500).json({
@@ -83,7 +83,7 @@ export const getAllRepliesOfPost = async(req, res) => {
         const res2 = await Reply.find({_id: {"$in": res1.replies}})
         return res.json({
             success: true,
-            message: res2
+            data: res2
         });
     } catch(err) {
         return res.status(500).json({
