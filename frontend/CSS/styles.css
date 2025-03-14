@@ -1,0 +1,42 @@
+.bg-gradient-primary {
+    background: linear-gradient(to right, #4361ee, #7209b7);
+  }
+  
+  .btn-primary {
+    background-color: #7209b7;
+    border-color: #7209b7;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5e05a1;
+    border-color: #5e05a1;
+  }
+  
+  .btn-outline-primary {
+    border-color: #7209b7;
+    color: #7209b7;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #7209b7;
+    color: white;
+  }
+  
+  .text-primary {
+    color: #7209b7 !important;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #7209b7;
+    box-shadow: 0 0 0 0.25rem rgba(114, 9, 183, 0.25);
+  }
+  
+  .card {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: 700;
+  }
