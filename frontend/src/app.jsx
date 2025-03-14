@@ -10,6 +10,8 @@ import Home from "./Pages/Home";
 import HomePage from "./Pages/Homepage";
 import Payment from "./pages/Payment";
 import Interview from "./Pages/Interview";
+import Community from './Pages/community';
+
 function App() {
   return (
     <Routes>
@@ -19,6 +21,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/homepage" element={<HomePage />} />
       <Route path="/interview" element={<Interview />} />
+      <Route path="/community" element={<Community />} />
     </Routes>
   );
 }
