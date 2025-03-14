@@ -14,7 +14,11 @@ const interviewSchema = new mongoose.Schema({
     //     type: [String],
     //     required: true
     // },
-    interviwee: {
+    keywords: {
+        type: [String],
+        required: true
+    },
+    userId: {
         type: ObjectId,
         ref: 'User',
         required: true

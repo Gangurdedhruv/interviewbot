@@ -45,7 +45,7 @@ const CheckoutForm = () => {
     
     // Use a more reliable endpoint path
     // In production, this should be relative like '/api/payment'
-    const apiUrl = isDev ? 'http://localhost:5173/api/create-payment-intent' : '/api/create-payment-intent';
+    const apiUrl = 'http://localhost:5000/api/payment/create-payment-intent';
     
     fetch(apiUrl, {
       method: 'POST',
@@ -63,7 +63,7 @@ const CheckoutForm = () => {
         
         // For debugging purposes
         setDebugInfo(prev => ({
-          ...prev, 
+          ...prev,
           data: {
             ...prev.data,
             status: res.status,
@@ -119,13 +119,11 @@ const CheckoutForm = () => {
 
     setPaymentStatus('loading');
     setProcessingMessage('Processing payment...');
-    
+
     try {
-      const cardElement = elements.getElement(CardElement);
-      
       const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
+      payment_method: {
+          card: elements.getElement(CardElement),
           billing_details: {
             name: 'Test User', // Ideally this would come from a form field
           },
@@ -188,7 +186,7 @@ const CheckoutForm = () => {
           </div>
         )}
         
-        {!processingMessage && (
+        {
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="form-label fw-medium">Card Information</label>
@@ -210,7 +208,7 @@ const CheckoutForm = () => {
               Pay $10.00
             </button>
           </form>
-        )}
+        }
         
         <div className="mt-4 text-center">
           <button 
