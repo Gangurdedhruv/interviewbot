@@ -169,7 +169,7 @@ const Registration = () => {
                       </div>
                     </div>
 
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                       <label htmlFor="domains" className="form-label">Domains</label>
                       <div className="input-group">
                         <span className="input-group-text"><FaTags /></span>
@@ -183,13 +183,14 @@ const Registration = () => {
                           required
                         />
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="mb-3">
                       <label htmlFor="password" className="form-label">Password</label>
                       <div className="input-group">
                         <span className="input-group-text"><FaLock /></span>
                         <input
+                  
                           type="password"
                           className="form-control"
                           id="password"
@@ -198,7 +199,10 @@ const Registration = () => {
                           onChange={handleChange}
                           required
                           minLength="8"
-                        />
+                          pattern="^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$"
+                          title="Password must be at least 8 characters long and include at least one uppercase letter and one special character."
+                      />
+    
                       </div>
                     </div>
 
