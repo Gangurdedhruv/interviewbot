@@ -344,6 +344,7 @@ import { FaFileUpload, FaPlay, FaUser, FaClipboard, FaUsers, FaCreditCard, FaTim
 import * as pdfjs from 'pdfjs-dist/webpack';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useNavigate } from 'react-router-dom';
+import NavBar from '@/components/Navbar';
 
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
@@ -485,7 +486,7 @@ const HomePage = () => {
 
   return (
     <div className="min-vh-100 bg-light">
-      <Navbar />
+      <NavBar />
       
       {/* Toast Container */}
       <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
@@ -621,45 +622,6 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-const Navbar = () => {
-  return (
-    <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
-      <div className="container">
-        <a className="navbar-brand fw-bold text-primary" href="#" style={{ color: '#7209b7' }}>Interview Bot</a>
-        
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <FaClipboard className="me-1" /> Dashboard
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="interview">
-                <FaUsers className="me-1" /> Community
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="payment">
-                <FaCreditCard className="me-1" /> Payment
-              </a>
-            </li>
-            <li className="nav-item ms-3">
-              <a className="nav-link" href="#">
-                <FaUser size={18} />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
   );
 };
 
