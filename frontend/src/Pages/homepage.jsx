@@ -300,7 +300,7 @@
 //     return (
 //       <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
 //         <div className="container">
-//           <a className="navbar-brand fw-bold text-primary" href="#" style={{ color: '#7209b7' }}>Interview Bot</a>
+//           <a className="navbar-brand fw-bold text-primary" href="#" style={{ color: '#7209b7' }}>PrepNexus</a>
           
 //           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 //             <span className="navbar-toggler-icon"></span>
@@ -412,7 +412,7 @@ const HomePage = () => {
         const keywordsList = [
           'Python', 'Java', 'JavaScript', 'C', 'C++', 'C#', 'Go', 'Ruby', 'Kotlin', 'Swift', 'R', 'PHP', 'TypeScript', 'Scala', 'Perl', 'Rust',
           'HTML', 'CSS', 'React', 'Angular', 'Vue.js', 'Node.js', 'Django', 'Flask', 'SQL', 'MongoDB', 'Firebase',
-          'TensorFlow', 'PyTorch', 'AWS', 'Docker', 'Linux', 'Git', 'Selenium', 'Algorithms', 'Data Structures', 'AI'
+          'TensorFlow', 'PyTorch', 'AWS', 'Docker', 'Linux', 'Git', 'Selenium', 'Algorithms', 'Data Structures', 'AI' , 'Security','Network Security', 'Firewalls'
         ];
 
         const uniqueWords = new Set(textContent.toLowerCase().split(/[\s,.;:!?(){}\[\]<>"/\\]+/).filter(word => word));
@@ -555,6 +555,8 @@ const HomePage = () => {
                       <option value="Machine Learning">Machine Learning</option>
                       <option value="SQL">SQL</option>
                       <option value="AWS">AWS</option>
+                      <option value="UI/UX">UI/UX</option>
+
                     </select>
                   </div>
                 </div>

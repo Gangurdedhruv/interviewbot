@@ -29,7 +29,7 @@ const Login = () => {
       }
 
       const result = await response.json();
-      alert(result.message);
+      //alert(result.message);
       if (result.success) {
         navigate('/homepage');
       }
@@ -46,7 +46,7 @@ const Login = () => {
       <nav className="navbar navbar-light bg-white shadow-sm">
         <div className="container">
           <Link className="navbar-brand text-primary" to="/">
-            <FaLaptopCode className="me-2" /> Interview Bot
+            <FaLaptopCode className="me-2" /> PrepNexus
           </Link>
         </div>
       </nav>
@@ -59,7 +59,7 @@ const Login = () => {
                 <div className="card-body p-4 p-lg-5">
                   <div className="text-center mb-4">
                     <h2 className="fw-bold">Welcome Back</h2>
-                    <p className="text-muted">Sign in to continue to Interview Bot</p>
+                    <p className="text-muted">Sign in to continue to PrepNexus</p>
                   </div>
 
                   {error && (
@@ -142,7 +142,7 @@ const Login = () => {
 
       <footer className="py-3 bg-white border-top">
         <div className="container text-center text-muted">
-          <small>© 2025 Interview Bot. All rights reserved.</small>
+          <small>© 2025 PrepNexus. All rights reserved.</small>
         </div>
       </footer>
     </div>

@@ -158,7 +158,7 @@ const CheckoutForm = () => {
         <p className="mb-4">Thank you for your purchase. Your premium features are now activated.</p>
         <button 
           className="btn btn-primary px-4 py-2"
-          onClick={() => window.location.href = '/'}
+          onClick={() => window.location.href = '/homepage'}
           style={{ backgroundColor: '#7209b7', borderColor: '#7209b7' }}
         >
           <FaHome className="me-2" /> Return to Dashboard
@@ -210,7 +210,7 @@ const CheckoutForm = () => {
           </form>
         }
         
-        <div className="mt-4 text-center">
+        {/* <div className="mt-4 text-center">
           <button 
             className="btn btn-link text-decoration-none" 
             onClick={() => setDebugInfo(prev => ({ ...prev, visible: !prev.visible }))}
@@ -226,7 +226,7 @@ const CheckoutForm = () => {
               {JSON.stringify(debugInfo.data, null, 2)}
             </pre>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
@@ -237,7 +237,7 @@ const PaymentPage = () => {
     <div className="min-vh-100 bg-light d-flex flex-column">
       <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div className="container">
-          <a className="navbar-brand fw-bold" href="#" style={{ color: '#7209b7' }}>Interview Bot</a>
+          <a className="navbar-brand fw-bold" href="#" style={{ color: '#7209b7' }}>PrepNexus</a>
         </div>
       </nav>
       
@@ -245,7 +245,7 @@ const PaymentPage = () => {
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-8">
             <div className="d-flex align-items-center mb-4">
-              <a href="/" className="btn btn-outline-secondary me-3">
+              <a href="/homepage" className="btn btn-outline-secondary me-3">
                 <FaArrowLeft /> Back
               </a>
               <h2 className="m-0">Complete Your Payment</h2>
@@ -274,7 +274,7 @@ const PaymentPage = () => {
       
       <footer className="bg-white py-4 border-top mt-auto">
         <div className="container text-center text-muted">
-          <small>© 2025 Interview Bot. All rights reserved.</small>
+          <small>© 2025 PrepNexus. All rights reserved.</small>
         </div>
       </footer>
     </div>
