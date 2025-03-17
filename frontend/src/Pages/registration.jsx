@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaLaptopCode, FaPhone, FaBriefcase, FaBuilding, FaTags } from 'react-icons/fa';
+import { registerUser } from '@/actions/userActions';
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -40,21 +41,16 @@ const Registration = () => {
 
     try {
       // Simulate API call
-      const response = await fetch('http://localhost:5000/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Registration failed');
+      const response = await registerUser(formData)
+      if (response.success === false) {
+        setError(response.message);
       }
-
-      localStorage.setItem('isLoggedIn', 'true');
-      navigate('/home');
+      else {
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/homepage');
+      }
     } catch (err) {
+      console.log(err)
       setError('Registration failed. Please try again.');
     } finally {
       setIsLoading(false);
