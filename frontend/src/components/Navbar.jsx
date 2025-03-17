@@ -4,7 +4,7 @@ const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm sticky-top">
             <div className="container">
-            <a className="navbar-brand fw-bold text-primary" href="#" style={{ color: '#7209b7' }}>Interview Bot</a>
+            <a className="navbar-brand fw-bold text-primary" href="homepage" style={{ color: '#7209b7' }}>PrepNexus</a>
             
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span className="navbar-toggler-icon"></span>

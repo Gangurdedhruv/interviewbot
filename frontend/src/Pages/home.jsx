@@ -10,7 +10,7 @@ const Home = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div className="container">
           <Link className="navbar-brand text-primary" to="/">
-            <FaLaptopCode className="me-2 d-inline" /> Interview Bot
+            <FaLaptopCode className="me-2 d-inline" /> PrepNexus
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@ const Home = () => {
             </div>
             <div className="col-lg-6">
               <img 
-                src="/api/placeholder/600/400" 
+                src="../images/home_img.jpeg" 
                 alt="Interview preparation" 
                 className="img-fluid rounded-3 shadow"
               />
@@ -63,7 +63,7 @@ const Home = () => {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6 text-center text-md-start">
-              <span className="text-muted">© 2025 Interview Bot. All rights reserved.</span>
+              <span className="text-muted">© 2025 PrepNexus. All rights reserved.</span>
             </div>
             <div className="col-md-6 text-center text-md-end">
               <a href="#" className="text-decoration-none text-muted me-3">Privacy Policy</a>
