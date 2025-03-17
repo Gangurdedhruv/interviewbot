@@ -6,9 +6,9 @@ export const register = async(req, res) => {
         console.log(req.body);
         const { email, password } = req.body;
 
-        const existingUser = await Users.findOne({ email });
+        const existingUser = await Users.findOne({ email:email });
         if (existingUser) {
-            return res.status(400).json({ message: 'User already exists' });
+            return res.status(400).json({ success: false, message: 'User already exists' });
         }
 
         const saltRounds = 10;
@@ -25,6 +25,7 @@ export const register = async(req, res) => {
     } catch (err) {
         console.error('Register Error:', err);
         res.status(500).json({
+            success: false,
             message: 'Error occurred',
             error: err.message
         });
