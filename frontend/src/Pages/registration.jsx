@@ -36,13 +36,12 @@ const Registration = () => {
       setError('Passwords do not match');
       return;
     }
-
     setIsLoading(true);
 
     try {
       // Simulate API call
       const response = await registerUser(formData)
-      if (response.success === false) {
+      if (!response.success) {
         setError(response.message);
       }
       else {
@@ -50,8 +49,7 @@ const Registration = () => {
         navigate('/homepage');
       }
     } catch (err) {
-      console.log(err)
-      print(err)  ;
+      console.error(err)
       setError('Registration failed. Please try again.');
     } finally {
       setIsLoading(false);

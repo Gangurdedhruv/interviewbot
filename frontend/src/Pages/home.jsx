@@ -47,7 +47,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-center align-items-center">
               <img 
                 src="../images/home_img.jpeg" 
                 alt="Interview preparation" 
