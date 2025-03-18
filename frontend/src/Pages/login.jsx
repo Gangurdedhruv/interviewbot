@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaLaptopCode } from 'react-icons/fa';
+import { loginUser } from '@/actions/userActions';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,25 +18,17 @@ const Login = () => {
     setIsLoading(true); // Start loading
     setError(""); // Clear previous error
     try {
-      const response = await fetch('http://localhost:5000/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json(); // Get error message from the response
-        throw new Error(errorData.message || `HTTP error! Status: ${response.status}`);
+      const response = await loginUser(formData)
+      if (!response.success) {
+        setError(response.message);
       }
-
-      const result = await response.json();
-      //alert(result.message);
-      if (result.success) {
+      else {
+        localStorage.setItem('isLoggedIn', 'true');
         navigate('/homepage');
       }
-    } catch (error) {
-      setError(error.message); // Set the error message to display
-      console.error("Error:", error.message);
+    } catch (err) {
+      setError(err); // Set the error message to display
+      console.error("Error:", err);
     } finally {
       setIsLoading(false); // Stop loading
     }

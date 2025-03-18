@@ -3,12 +3,16 @@ import bcrypt from 'bcryptjs';
 
 export const register = async(req, res) => {
     try {
-        console.log(req.body);
-        const { email, password } = req.body;
+        // console.log("Body from action:",req.body);
+        const { email, phone, password } = req.body;
 
-        const existingUser = await Users.findOne({ email:email });
-        if (existingUser) {
-            return res.status(400).json({ success: false, message: 'User already exists' });
+        const existingEmail = await Users.findOne({ email:email });
+        if (existingEmail) {
+            return res.status(400).json({ success: false, message: 'Account with this email exists' });
+        }
+        const existingPhone = await Users.findOne({ phone:phone });
+        if (existingPhone) {
+            return res.status(400).json({ success: false, message: 'Account with this phone number exists' });
         }
 
         const saltRounds = 10;
@@ -26,8 +30,7 @@ export const register = async(req, res) => {
         console.error('Register Error:', err);
         res.status(500).json({
             success: false,
-            message: 'Error occurred',
-            error: err.message
+            message: err.message
         });
     }
 }
@@ -36,14 +39,13 @@ export const login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const existingMail = await Users.findOne({ email });
+        const existingMail = await Users.findOne({ email:email });
         if (!existingMail) {
-            return res.status(400).json({ message: 'No user with this email' });
+            return res.status(400).json({ success: false, message: 'Email not found' });
         }
-
         const isPasswordValid = await bcrypt.compare(password, existingMail.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ message: 'Invalid email or password' });
+            return res.status(400).json({ success: false, message: 'Invalid password' });
         }
 
         return res.status(200).json({
@@ -53,8 +55,8 @@ export const login = async (req, res) => {
     } catch (err) {
         console.log('Login Error:', err);
         res.status(500).json({
-            message: 'Error occurred',
-            error: err.message
+            success: false,
+            message: err.message
         });
     }
 }
