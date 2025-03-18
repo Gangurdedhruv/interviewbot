@@ -51,6 +51,7 @@ const Registration = () => {
       }
     } catch (err) {
       console.log(err)
+      print(err)  ;
       setError('Registration failed. Please try again.');
     } finally {
       setIsLoading(false);

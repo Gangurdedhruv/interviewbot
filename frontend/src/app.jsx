@@ -11,7 +11,7 @@ import HomePage from "./Pages/Homepage";
 import Payment from "./pages/Payment";
 import Interview from "./Pages/Interview";
 import Community from './Pages/community';
-
+import Profile from './Pages/profile';
 function App() {
   return (
     <Routes>
@@ -22,6 +22,7 @@ function App() {
       <Route path="/homepage" element={<HomePage />} />
       <Route path="/interview" element={<Interview />} />
       <Route path="/community" element={<Community />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

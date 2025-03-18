@@ -31,6 +31,8 @@ const InterviewChatPage = () => {
   const [codeValue, setCodeValue] = useState('');
   const [codeLanguage, setCodeLanguage] = useState('javascript');
   const [currentDifficulty, setCurrentDifficulty] = useState('Basic');
+  const [totalScore, setTotalScore] = useState(0);  // New state for total score
+  const [answeredQuestions, setAnsweredQuestions] = useState(0);  // Track answered questions
   
   const chatEndRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -181,6 +183,8 @@ const InterviewChatPage = () => {
         
         // Reset question index and keywords for the new skill
         setCurrentQuestionIndex(0);
+        setTotalScore(0);
+        setAnsweredQuestions(0);
         if (!keywordsToStudy[activeSkill]) {
           setKeywordsToStudy(prev => ({...prev, [activeSkill]: []}));
         }
@@ -274,6 +278,10 @@ const InterviewChatPage = () => {
         keywordsMatch[1].split(',').map(k => k.trim()).filter(k => k) : 
         ["concept 1", "concept 2"];
       
+      // Add current score to total and increment the answered questions counter
+      setTotalScore(prevTotal => prevTotal + score);
+      setAnsweredQuestions(prev => prev + 1);
+      
       // Update keywords to study for this skill
       setKeywordsToStudy(prev => ({
         ...prev,
@@ -359,6 +367,12 @@ const InterviewChatPage = () => {
     setTranscript('');
   };
   
+  // Calculate normalized score out of 100
+  const calculateFinalScore = () => {
+    if (answeredQuestions === 0) return 0;
+    return Math.round(totalScore / answeredQuestions);
+  };
+  
   // Common function to move to the next question
   const moveToNextQuestion = () => {
     // Get current questions
@@ -394,11 +408,14 @@ const InterviewChatPage = () => {
           }
         ]);
       } else {
+        // Calculate final score out of 100
+        const finalScore = calculateFinalScore();
+        
         setMessages(prev => [
           ...prev, 
           { 
             sender: 'bot', 
-            content: `You've completed all the ${activeSkill} questions! Here are the key concepts you should review: ${keywordsToStudy[activeSkill].join(', ')}`
+            content: `You've completed all the ${activeSkill} questions!\n\nYour final score is: ${finalScore}/100 (answered ${answeredQuestions} of 20 questions).\n\nHere are the key concepts you should review: ${keywordsToStudy[activeSkill].join(', ')}`
           }
         ]);
       }
@@ -508,9 +525,9 @@ const InterviewChatPage = () => {
             </p>
           </div>
           <div className="me-2">
-            {lastAnswerScore !== null && (
-              <div className={`badge ${getScoreBadgeColor(lastAnswerScore)} py-2 px-3`}>
-                Last Score: {lastAnswerScore}/100
+            {answeredQuestions > 0 && (
+              <div className={`badge ${getScoreBadgeColor(calculateFinalScore())} py-2 px-3`}>
+                Current Score: {calculateFinalScore()}/100
               </div>
             )}
           </div>
