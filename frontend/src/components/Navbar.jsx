@@ -28,8 +28,8 @@ const NavBar = () => {
                     </a>
                 </li>
                 <li className="nav-item ms-3">
-                    <a className="nav-link" href="#">
-                    <FaUser size={18} />
+                    <a className="nav-link" href="profile">
+                    <FaUser size={18}  /> Profile 
                     </a>
                 </li>
                 </ul>
