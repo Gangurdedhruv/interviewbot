@@ -47,7 +47,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required."],
         
-    }
+    },
+    paymentStatus: {
+        type: Boolean,
+        default: false
+    },
 }, {
     timestamps: true
 });

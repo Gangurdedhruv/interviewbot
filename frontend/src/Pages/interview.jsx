@@ -7,7 +7,7 @@ import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript';
 import 'ace-builds/src-noconflict/mode-python';
 import 'ace-builds/src-noconflict/theme-monokai';
-
+import Compiler from '@/components/Compiler';
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
 
@@ -573,49 +573,7 @@ const InterviewChatPage = () => {
         
         {/* Code Console */}
         {showCodeConsole && (
-          <div className="bg-dark p-3 border-top" style={{ height: '300px' }}>
-            <div className="d-flex justify-content-between align-items-center mb-2">
-              <div>
-                <select 
-                  className="form-select form-select-sm" 
-                  value={codeLanguage} 
-                  onChange={(e) => setCodeLanguage(e.target.value)}
-                  style={{ width: '150px' }}
-                >
-                  <option value="javascript">JavaScript</option>
-                  <option value="python">Python</option>
-                  <option value="java">Java</option>
-                  <option value="csharp">C#</option>
-                </select>
-              </div>
-              <button 
-                className="btn btn-sm btn-outline-light" 
-                onClick={toggleCodeConsole}
-              >
-                Close Console
-              </button>
-            </div>
-            <AceEditor
-              mode={codeLanguage}
-              theme="monokai"
-              name="code-editor"
-              onChange={setCodeValue}
-              value={codeValue}
-              width="100%"
-              height="220px"
-              fontSize={14}
-              showPrintMargin={true}
-              showGutter={true}
-              highlightActiveLine={true}
-              setOptions={{
-                enableBasicAutocompletion: true,
-                enableLiveAutocompletion: true,
-                enableSnippets: true,
-                showLineNumbers: true,
-                tabSize: 2,
-              }}
-            />
-          </div>
+          <Compiler />
         )}
         
         {/* Transcript editing area */}
