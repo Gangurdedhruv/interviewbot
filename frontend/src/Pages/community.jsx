@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch, FaThumbsUp, FaComment, FaBookmark, FaTags, FaFilter, FaSort } from 'react-icons/fa';
 import NavBar from '@/components/Navbar'
+import { getAllPosts } from '@/actions/commActions';
 
 const Community = () => {
     const [posts, setPosts] = useState([]);
@@ -22,65 +23,6 @@ const Community = () => {
         { name: 'Machine Learning', count: 38 },
     ];
 
-    // Example/mock data for community posts
-    const mockPosts = [
-        {
-        id: 1,
-        title: 'What are the most important React hooks to know for interviews?',
-        content: 'I have an upcoming interview for a React developer position. Which hooks should I prioritize studying and how would you explain them in simple terms?',
-        author: 'reactLearner',
-        date: '2 days ago',
-        votes: 24,
-        answers: 8,
-        views: 156,
-        tags: ['React', 'JavaScript', 'Interviews']
-        },
-        {
-        id: 2,
-        title: 'How to prepare for AWS Solution Architect interview?',
-        content: 'I\'m interviewing for an AWS Solution Architect role next month. What services should I focus on and what kind of scenario questions should I expect?',
-        author: 'cloudEnthusiast',
-        date: '5 days ago',
-        votes: 18,
-        answers: 5,
-        views: 127,
-        tags: ['AWS', 'Cloud', 'Interviews']
-        },
-        {
-        id: 3,
-        title: 'Python coding challenges that commonly come up in interviews',
-        content: 'Can anyone share the most frequent Python coding challenges they\'ve encountered during technical interviews? I\'m specifically looking for data structure problems.',
-        author: 'pythonista',
-        date: '1 week ago',
-        votes: 32,
-        answers: 12,
-        views: 243,
-        tags: ['Python', 'Algorithms', 'Data Structures']
-        },
-        {
-        id: 4,
-        title: 'How to explain SQL joins in an interview?',
-        content: 'I struggle explaining the different types of joins (inner, left, right, full) in a clear way. Any tips on how to articulate this during interviews?',
-        author: 'dataWizard',
-        date: '2 weeks ago',
-        votes: 15,
-        answers: 7,
-        views: 198,
-        tags: ['SQL', 'Database', 'Interviews']
-        },
-        {
-        id: 5,
-        title: 'Best resources to prepare for machine learning interviews',
-        content: 'I\'m looking for books, courses, or practice platforms that focus specifically on machine learning interview questions. Any recommendations?',
-        author: 'mlEngineer',
-        date: '3 weeks ago',
-        votes: 29,
-        answers: 11,
-        views: 267,
-        tags: ['Machine Learning', 'Data Science', 'AI']
-        }
-    ];
-
     // Custom toast function (same as homepage)
     const showToast = (title, message, type = 'success') => {
         const id = Date.now();
@@ -93,22 +35,17 @@ const Community = () => {
     };
 
     useEffect(() => {
-        // Simulate API call to fetch posts
         const loadPosts = async () => {
-        setIsLoading(true);
-        try {
-            // In a real application, this would be an API call
-            setTimeout(() => {
-            setPosts(mockPosts);
-            setIsLoading(false);
-            }, 1000);
-        } catch (error) {
-            console.error('Error loading posts:', error);
-            showToast('Error loading posts', 'Failed to load community posts', 'danger');
-            setIsLoading(false);
-        }
+            setIsLoading(true);
+            try {
+                setPosts((await getAllPosts()).data);
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                showToast('Error loading posts', 'Failed to load community posts', 'danger');
+                setIsLoading(false);
+            }
         };
-
         loadPosts();
     }, []);
 
@@ -123,11 +60,11 @@ const Community = () => {
     // Sort posts based on selected sort option
     const sortedPosts = [...filteredPosts].sort((a, b) => {
         if (sortBy === 'newest') {
-        return b.id - a.id; // Simple proxy for date in this example
+            return b.updatedAt - a.updatedAt;
         } else if (sortBy === 'votes') {
-        return b.votes - a.votes;
+            return b.votes - a.votes;
         } else if (sortBy === 'answers') {
-        return b.answers - a.answers;
+            return b.replycount - a.replycount;
         }
         return 0;
     });
@@ -187,7 +124,7 @@ const Community = () => {
                 </div>
                 </div>
                 
-                <div className="card">
+                {/* <div className="card">
                 <div className="card-body">
                     <h5 className="card-title mb-3">Filter By</h5>
                     <div className="d-flex flex-column gap-2">
@@ -202,7 +139,7 @@ const Community = () => {
                     </button>
                     </div>
                 </div>
-                </div>
+                </div> */}
             </div>
 
             {/* Right Side - Post Listings */}
@@ -259,7 +196,7 @@ const Community = () => {
                 <div className="d-flex flex-column gap-3">
                     {sortedPosts.length > 0 ? (
                     sortedPosts.map(post => (
-                        <div key={post.id} className="card">
+                        <div key={post._id} className="card">
                         <div className="card-body">
                             <div className="d-flex" >
                             {/* Stats Column */}
@@ -269,7 +206,7 @@ const Community = () => {
                                     <div className="small text-secondary">votes</div>
                                 </div>
                                 <div className="p-2">
-                                    <div className="fw-bold">{post.answers}</div>
+                                    <div className="fw-bold">{post.replycount}</div>
                                     <div className="small text-secondary">answers</div>
                                 </div>
                                     <div className="p-2">
@@ -279,7 +216,7 @@ const Community = () => {
                             
                             {/* Content Column */}
                             <div className="flex-grow-1" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                <a href="#" className="h5 card-title text-decoration-none" style={{ color: '#4361ee' }}>
+                                <a href={`/community/${post._id}`}  className="h5 card-title text-decoration-none" style={{ color: '#4361ee' }}>
                                     {post.title}
                                 </a>
                                 <p className="card-text text-truncate mb-2" style={{ maxWidth: '100%'}}>
@@ -294,8 +231,8 @@ const Community = () => {
                                 </div>
                                 <div className="d-flex justify-content-end align-items-end">
                                     <div className="small text-secondary">
-                                        <span className="me-2">asked {post.date}</span>
-                                        <span className="fw-medium">{post.author}</span>
+                                        <span className="me-2">asked {post.updatedAt}</span>
+                                        <span className="fw-medium">{post.userId}</span>
                                     </div>
                                 </div>
 
@@ -307,7 +244,7 @@ const Community = () => {
                                     </div>
                                     <div className="d-flex align-items-center">
                                         <FaComment className="text-secondary me-1" />
-                                        <span className="small text-secondary">{post.answers}</span>
+                                        <span className="small text-secondary">{post.replycount}</span>
                                     </div>
                                     <div className="d-flex align-items-center">
                                         <FaBookmark className="text-secondary me-1" />
