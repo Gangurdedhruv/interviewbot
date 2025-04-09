@@ -31,9 +31,24 @@ export const getAllPosts = async(req, res) => {
     }
 }
 
+export const getPostById = async(req, res) => {
+    try{
+        const response = await Post.findById(req.params.id)
+        return res.json({
+            success: true,
+            data: response
+        });
+    } catch(err) {
+        return res.status(500).json({
+            success: false,
+            error: err
+        })
+    }
+}
+
 export const updatePost = async(req, res) => {
     try{
-        const response = await Post.findByIdAndUpdate(req.params._id, req.body, {new: true})
+        const response = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
         return res.json({
             success: true,
             message: response
@@ -48,7 +63,7 @@ export const updatePost = async(req, res) => {
 
 export const deletePost = async(req, res) => {
     try{
-        const response = await Post.findByIdAndDelete(req.params._id)
+        const response = await Post.findByIdAndDelete(req.params.id)
         return res.json({
             success: true,
             message: response
@@ -64,7 +79,7 @@ export const deletePost = async(req, res) => {
 export const addReply = async(req, res) => {
     try{
         const res1 = await Reply.create(req.body)
-        const res2 = await Post.findByIdAndUpdate(req.params._id, { "$push": {replies: res1._id}}, {new: true})
+        const res2 = await Post.findByIdAndUpdate(req.params.id, { "$push": {replies: res1._id}}, {new: true})
         return res.json({
             success: true,
             message: res2
@@ -79,7 +94,7 @@ export const addReply = async(req, res) => {
 
 export const getAllRepliesOfPost = async(req, res) => {
     try{
-        const res1 = await Post.findById(req.body, {_id:0, replies:1})
+        const res1 = await Post.findById(req.params.id, {_id:0, replies:1})
         const res2 = await Reply.find({_id: {"$in": res1.replies}})
         return res.json({
             success: true,
@@ -95,7 +110,7 @@ export const getAllRepliesOfPost = async(req, res) => {
 
 export const updateReply = async(req, res) => {
     try{
-        const response = await Reply.findByIdAndUpdate(req.params._id, req.body, {new: true})
+        const response = await Reply.findByIdAndUpdate(req.params.id, req.body, {new: true})
         return res.json({
             success: true,
             message: response
