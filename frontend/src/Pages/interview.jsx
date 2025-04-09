@@ -117,6 +117,7 @@ const InterviewChatPage = () => {
       - 10 Basic questions (numbered 1-10)
       - 5 Intermediate questions (numbered 11-15)
       - 5 Advanced questions (numbered 16-20)
+      If ${skill} is a programming language then include 1 programming question in each basic, intermediate and advanced 
       
       Format your response exactly as follows with just the questions, no other text:
       1. [Basic question 1]
