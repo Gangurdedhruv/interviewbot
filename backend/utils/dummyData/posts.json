@@ -1,0 +1,37 @@
+[
+	{
+		"title": "What are the most important React hooks to know for interviews?",
+		"content": "I have an upcoming interview for a React developer position. Which hooks should I prioritize studying and how would you explain them in simple terms?",
+		"votes": 24,
+		"replycount": 8,
+		"tags": ["React", "JavaScript", "Interviews"]
+	},
+	{
+		"title": "How to prepare for AWS Solution Architect interview?",
+		"content": "I\"m interviewing for an AWS Solution Architect role next month. What services should I focus on and what kind of scenario questions should I expect?",
+		"votes": 18,
+		"replycount": 5,
+		"tags": ["AWS", "Cloud", "Interviews"]
+	},
+	{
+		"title": "Python coding challenges that commonly come up in interviews",
+		"content": "Can anyone share the most frequent Python coding challenges they\"ve encountered during technical interviews? I\"m specifically looking for data structure problems.",
+		"votes": 32,
+		"replycount": 12,
+		"tags": ["Python", "Algorithms", "Data Structures"]
+	},
+	{
+		"title": "How to explain SQL joins in an interview?",
+		"content": "I struggle explaining the different types of joins (inner, left, right, full) in a clear way. Any tips on how to articulate this during interviews?",
+		"votes": 15,
+		"replycount": 7,
+		"tags": ["SQL", "Database", "Interviews"]
+	},
+	{
+		"title": "Best resources to prepare for machine learning interviews",
+		"content": "I\"m looking for books, courses, or practice platforms that focus specifically on machine learning interview questions. Any recommendations?",
+		"votes": 29,
+		"replycount": 11,
+		"tags": ["Machine Learning", "Data Science", "AI"]
+	}
+]

@@ -12,6 +12,8 @@ import Payment from "./pages/Payment";
 import Interview from "./Pages/Interview";
 import Community from './Pages/community';
 import Profile from './Pages/profile';
+import Post from './Pages/post';
+
 function App() {
   return (
     <Routes>
@@ -22,6 +24,7 @@ function App() {
       <Route path="/homepage" element={<HomePage />} />
       <Route path="/interview" element={<Interview />} />
       <Route path="/community" element={<Community />} />
+      <Route path='/community/:id' element={<Post />} />
       <Route path="/profile" element={<Profile />} />
     </Routes>
   );

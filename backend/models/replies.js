@@ -11,6 +11,13 @@ const replySchema = new mongoose.Schema({
         type: ObjectId,
         ref: 'User',
         required: true
+    },
+    votes: {
+        type: Number,
+        default: 0,
+    },
+    isAccepted: {
+        type: Boolean,
     }
 }, { timestamps: true });
 

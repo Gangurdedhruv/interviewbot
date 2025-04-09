@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    description: {
+    content: {
         type: String,
         required: true,
         trim: true
@@ -19,7 +19,17 @@ const postSchema = new mongoose.Schema({
     },
     replies: {
         type: [ObjectId],
-        default: []
+    },
+    replycount: {
+        type: Number,
+        default: 0
+    },
+    tags: {
+        type: [String],
+    },
+    votes: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 
