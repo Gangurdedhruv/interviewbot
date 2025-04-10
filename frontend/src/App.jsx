@@ -29,7 +29,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/aboutus" element={<AboutUs />} />
 
-        {/* Protected Routes */}
+        {/*Protected Routes */}
         <Route
           path="/homepage"
           element={
@@ -47,14 +47,6 @@ function App() {
           }
         />
         <Route
-          path="/post"
-          element={
-            <ProtectedRoute>
-              <Post/>
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/community"
           element={
             <ProtectedRoute>
@@ -62,7 +54,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-        
+        <Route
+          path="/community/:id"
+          element={
+            <ProtectedRoute>
+              <Post />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/profile"
           element={

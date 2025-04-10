@@ -115,7 +115,6 @@ const Post = () => {
   if (isLoading) {
     return (
       <div className="min-vh-100 bg-light">
-        <NavBar />
         <div className="container py-5">
           <div className="card">
             <div className="card-body text-center p-5">
@@ -136,8 +135,6 @@ const Post = () => {
 
   return (
     <div className="min-vh-100 bg-light">
-      <NavBar />
-      
       {/* Toast Container */}
       <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
         {toasts.map(toast => (
