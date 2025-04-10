@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaUser, FaRobot, FaPaperPlane, FaHome, FaBookmark, FaHistory, FaEllipsisH, FaChevronDown, FaChevronRight, FaMicrophone, FaMicrophoneSlash, FaCode, FaStepForward, FaEdit } from 'react-icons/fa';
+import { FaUser, FaRobot, FaPaperPlane, FaHome, FaBookmark, FaHistory, FaEllipsisH, FaChevronRight, FaMicrophone, FaMicrophoneSlash,  FaStepForward} from 'react-icons/fa';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useNavigate } from 'react-router-dom';
 import AceEditor from 'react-ace';
@@ -26,7 +26,7 @@ const InterviewChatPage = () => {
   const [isGeneratingQuestions, setIsGeneratingQuestions] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('');
-  const [isEditingTranscript, setIsEditingTranscript] = useState(false);
+
   const [showCodeConsole, setShowCodeConsole] = useState(false);
   const [codeValue, setCodeValue] = useState('');
   const [codeLanguage, setCodeLanguage] = useState('javascript');
@@ -63,8 +63,10 @@ const InterviewChatPage = () => {
     
     // Initialize speech recognition
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+      console.log("Speech recognition API is available");
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       recognitionRef.current = new SpeechRecognition();
+      console.log("Speech recognition initialized:", recognitionRef.current);
       recognitionRef.current.continuous = true;
       recognitionRef.current.interimResults = true;
       
@@ -89,6 +91,9 @@ const InterviewChatPage = () => {
         console.error('Speech recognition error', event.error);
         stopRecording();
       };
+    }
+    else {
+      console.error("Speech recognition API is NOT available in this browser");
     }
     
     return () => {
@@ -202,6 +207,7 @@ const InterviewChatPage = () => {
   
   // Function to toggle recording
   const toggleRecording = () => {
+    console.log("toggleRecording called, current state:", isRecording);
     if (isRecording) {
       stopRecording();
     } else {
@@ -211,11 +217,19 @@ const InterviewChatPage = () => {
   
   // Function to start recording
   const startRecording = () => {
+    console.log("startRecording called, recognition ref:", recognitionRef.current);
     if (recognitionRef.current) {
-      recognitionRef.current.start();
-      setIsRecording(true);
-      setTranscript('');
+      try {
+        recognitionRef.current.start();
+        console.log("Speech recognition started successfully");
+        setIsRecording(true);
+        setTranscript('');
+      } catch (error) {
+        console.error("Error starting speech recognition:", error);
+        alert('Error starting speech recognition: ' + error.message);
+      }
     } else {
+      console.error("Speech recognition is not supported or not initialized");
       alert('Speech recognition is not supported in your browser.');
     }
   };
@@ -229,13 +243,7 @@ const InterviewChatPage = () => {
   };
   
   // Function to edit transcript
-  const toggleEditTranscript = () => {
-    if (isEditingTranscript) {
-      // When finished editing, update the input with the transcript
-      setInput(transcript);
-    }
-    setIsEditingTranscript(!isEditingTranscript);
-  };
+  
   
   // Function to toggle code console
   const toggleCodeConsole = () => {
@@ -533,13 +541,6 @@ const InterviewChatPage = () => {
             )}
           </div>
           <div>
-            <button 
-              className="btn btn-sm btn-outline-primary me-2" 
-              onClick={toggleCodeConsole}
-              title="Open code console"
-            >
-              <FaCode />
-            </button>
           </div>
         </div>
         
@@ -577,27 +578,7 @@ const InterviewChatPage = () => {
           <Compiler />
         )}
         
-        {/* Transcript editing area */}
-        {isEditingTranscript && (
-          <div className="bg-white p-3 border-top">
-            <div className="d-flex align-items-center mb-2">
-              <h6 className="m-0 me-2">Edit Transcript</h6>
-              <button 
-                className="btn btn-sm btn-outline-success" 
-                onClick={toggleEditTranscript}
-              >
-                Save Changes
-              </button>
-            </div>
-            <textarea
-              className="form-control"
-              value={transcript}
-              onChange={(e) => setTranscript(e.target.value)}
-              rows="3"
-              style={{ resize: 'none', borderRadius: '8px' }}
-            />
-          </div>
-        )}
+        
         
         {/* Input area */}
         <div className="bg-white p-3 border-top">
@@ -635,14 +616,6 @@ const InterviewChatPage = () => {
           
           <div className="d-flex justify-content-between">
             <div>
-              <button 
-                className="btn btn-sm btn-outline-primary me-2"
-                onClick={toggleEditTranscript}
-                disabled={isRecording || isEvaluating || !input.trim()}
-              >
-                <FaEdit className="me-1" /> Edit Transcript
-              </button>
-              
               <button 
                 className="btn btn-sm btn-outline-warning"
                 onClick={skipQuestion}

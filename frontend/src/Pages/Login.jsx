@@ -36,13 +36,7 @@ const Login = () => {
 
   return (
     <div className="min-vh-100 d-flex flex-column">
-      <nav className="navbar navbar-light bg-white shadow-sm">
-        <div className="container">
-          <Link className="navbar-brand text-primary" to="/">
-            <FaLaptopCode className="me-2" /> PrepNexus
-          </Link>
-        </div>
-      </nav>
+
 
       <div className="flex-grow-1 d-flex align-items-center bg-light">
         <div className="container py-5">

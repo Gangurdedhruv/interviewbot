@@ -1,33 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaUserPlus, FaSignInAlt, FaLaptopCode } from 'react-icons/fa';
 
-const Home = () => {
+const Landing= () => {
   return (
     <div className="min-vh-100 d-flex flex-column">
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div className="container">
-          <Link className="navbar-brand text-primary" to="/">
-            <FaLaptopCode className="me-2 d-inline" /> PrepNexus
-          </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <div className="ms-auto">
-              <Link to="/login" className="btn btn-outline-primary me-2">
-                <FaSignInAlt className="me-1" /> Log In
-              </Link>
-              <Link to="/registration" className="btn btn-primary">
-                <FaUserPlus className="me-1" /> Sign Up
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <div className="flex-grow-1 d-flex align-items-center">
         <div className="container py-5">
@@ -42,8 +20,8 @@ const Home = () => {
                 <Link to="/registration" className="btn btn-primary btn-lg px-4 me-md-2">
                   Get Started
                 </Link>
-                <Link to="/login" className="btn btn-outline-secondary btn-lg px-4">
-                  Learn More
+                <Link to="/Aboutus" className="btn btn-outline-secondary btn-lg px-4">
+                  About us 
                 </Link>
               </div>
             </div>
@@ -76,4 +54,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Landing;
