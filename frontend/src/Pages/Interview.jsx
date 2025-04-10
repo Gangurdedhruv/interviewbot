@@ -1,12 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaUser, FaRobot, FaPaperPlane, FaHome, FaBookmark, FaHistory, FaEllipsisH, FaChevronRight, FaMicrophone, FaMicrophoneSlash,  FaStepForward} from 'react-icons/fa';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useNavigate } from 'react-router-dom';
-import AceEditor from 'react-ace';
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/mode-python';
-import 'ace-builds/src-noconflict/theme-monokai';
 import Compiler from '@/components/Compiler';
 // Initialize Google Generative AI
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_API_KEY);
