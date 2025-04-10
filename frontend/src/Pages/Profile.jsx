@@ -99,42 +99,6 @@ const Profile = () => {
 
   return (
     <div className="min-vh-100 d-flex flex-column">
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div className="container">
-          <Link className="navbar-brand text-primary" to="/homepage">
-            <FaLaptopCode className="me-2 d-inline" /> PrepNexus
-          </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/homepage">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/practice">Practice</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/profile">Profile</Link>
-              </li>
-            </ul>
-            <div className="ms-auto">
-              <button 
-                className="btn btn-outline-danger"
-                onClick={() => {
-                  localStorage.removeItem('userToken');
-                  navigate('/login');
-                }}
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       <div className="container py-4 flex-grow-1">
         {/* Profile Header */}
         <div className="row mb-4">
@@ -392,6 +356,16 @@ const Profile = () => {
             </>
           </div>
         )}
+      </div>
+
+      <div className="ms-auto" style={{paddingRight:'120px'}} >
+        <button 
+          className="btn btn-outline-danger"
+          onClick={() => {
+          localStorage.removeItem('userToken');
+          navigate('/login'); }}>
+          Log Out
+        </button>
       </div>
 
       {/* Footer */}

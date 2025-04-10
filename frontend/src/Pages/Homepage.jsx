@@ -147,8 +147,6 @@ const HomePage = () => {
 
   return (
     <div className="min-vh-100 bg-light">
-      <NavBar />
-      
       {/* Toast Container */}
       <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
         {toasts.map(toast => (
@@ -199,9 +197,14 @@ const HomePage = () => {
                       {fileName ? fileName : "Choose PDF File"}
                     </button>
                   </div>
-
+                  <div className="text-center my-3 position-relative">
+                    <hr className="my-2" />
+                    <span className="position-absolute top-50 start-50 translate-middle bg-white px-3 fw-medium">
+                      OR
+                    </span>
+                  </div>
                   <div>
-                    <label className="form-label fw-medium">Or Select Subject</label>
+                    <label className="form-label fw-medium">Select Domain </label>
                     <select 
                       className="form-select py-2"
                       value={selectedSubject}

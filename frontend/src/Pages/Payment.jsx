@@ -235,12 +235,7 @@ const CheckoutForm = () => {
 const PaymentPage = () => {
   return (
     <div className="min-vh-100 bg-light d-flex flex-column">
-      <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div className="container">
-          <a className="navbar-brand fw-bold" href="#" style={{ color: '#7209b7' }}>PrepNexus</a>
-        </div>
-      </nav>
-      
+     
       <div className="container py-5 flex-grow-1">
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-8">

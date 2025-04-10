@@ -75,8 +75,6 @@ const Community = () => {
 
     return (
         <div className="min-vh-100 bg-light">
-        <NavBar />
-        
         {/* Toast Container */}
         <div className="toast-container position-fixed top-0 end-0 p-3" style={{ zIndex: 1050 }}>
         {toasts.map(toast => (
@@ -123,23 +121,6 @@ const Community = () => {
                     </div>
                 </div>
                 </div>
-                
-                {/* <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title mb-3">Filter By</h5>
-                    <div className="d-flex flex-column gap-2">
-                    <button className="btn btn-outline-secondary btn-sm text-start">
-                        <FaFilter className="me-2" /> Unanswered Questions
-                    </button>
-                    <button className="btn btn-outline-secondary btn-sm text-start">
-                        <FaFilter className="me-2" /> My Bookmarks
-                    </button>
-                    <button className="btn btn-outline-secondary btn-sm text-start">
-                        <FaFilter className="me-2" /> My Questions
-                    </button>
-                    </div>
-                </div>
-                </div> */}
             </div>
 
             {/* Right Side - Post Listings */}
