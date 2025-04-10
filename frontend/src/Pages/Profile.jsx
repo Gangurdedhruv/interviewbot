@@ -25,15 +25,9 @@ const Profile = () => {
     try {
       setLoading(true);
       
-      const config = {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`,
-        },
-      };
-      
       try {
         // Fetch user profile
-        const profileResponse = await axios.get('/api/user/profile', config);
+        const profileResponse = await axios.get('/api/user/profile');
         setUserProfile(profileResponse.data);
       } catch (profileError) {
         console.error('Error fetching profile:', profileError);
@@ -42,7 +36,7 @@ const Profile = () => {
       
       try {
         // Fetch interview history
-        const historyResponse = await axios.get('/api/interviews', config);
+        const historyResponse = await axios.get('/api/interviews');
         // Ensure we're setting an array, even if the API returns something else
         setInterviewResults(Array.isArray(historyResponse.data) ? historyResponse.data : []);
       } catch (historyError) {
@@ -52,7 +46,7 @@ const Profile = () => {
       
       try {
         // Fetch interview statistics
-        const statsResponse = await axios.get('/api/interviews/stats', config);
+        const statsResponse = await axios.get('/api/interviews/stats');
         setStats({
           skillCounts: Array.isArray(statsResponse.data.skillCounts) ? statsResponse.data.skillCounts : [],
           recentActivity: Array.isArray(statsResponse.data.recentActivity) ? statsResponse.data.recentActivity : [],
@@ -362,8 +356,9 @@ const Profile = () => {
         <button 
           className="btn btn-outline-danger"
           onClick={() => {
-          localStorage.removeItem('userToken');
-          navigate('/login'); }}>
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            navigate('/login'); }}>
           Log Out
         </button>
       </div>

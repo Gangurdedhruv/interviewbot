@@ -11,7 +11,7 @@ const AboutUs = () => {
     },
     {
       id: 2,
-      name: "Dhanesh Narayanan",
+      name: "Dhanesh",
       role: "Full Stack Developer",
       image: "../images/dhanesh.jpg",
       bio: `Hi, I'm Dhanesh— a passionate developer and someone who lives and breathes computer science. From algorithms to full-stack development, I enjoy diving deep into the core of technology and building solutions that are clean, scalable, and efficient.\n\nAs a co-creator of PrepNexus, I bring a strong technical foundation and an eye for architecture and system design. I’ve always believed that a good developer doesn’t just write code — they craft experiences, think logically, and solve real-world problems with precision. This project reflects that philosophy — combining structured learning with intuitive design.\n\nWhether it's building responsive interfaces, optimizing backend logic, or brainstorming new features, I'm committed to making PrepNexus a powerful tool for anyone navigating the tech interview journey.`

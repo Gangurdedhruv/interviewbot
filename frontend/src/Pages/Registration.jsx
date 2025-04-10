@@ -45,7 +45,6 @@ const Registration = () => {
         setError(response.message);
       }
       else {
-        localStorage.setItem('isLoggedIn', 'true');
         navigate('/homepage');
       }
     } catch (err) {
