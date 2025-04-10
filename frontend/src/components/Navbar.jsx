@@ -14,11 +14,11 @@ const NavBar = () => {
                 
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link" href="#">
                                 <FaClipboard className="me-1" /> Dashboard
                             </a>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <a className="nav-link" href="community">
                                 <FaUsers className="me-1" /> Community

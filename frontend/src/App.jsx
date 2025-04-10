@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/styles.css';
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar'; 
 import Registration from "./Pages/registration";
@@ -15,7 +15,7 @@ import Community from './Pages/community';
 import Profile from './Pages/profile';
 import Post from './Pages/post';
 import AboutUs from './Pages/AboutUs';
-import ProtectedRoute from './components/restrictRouting/ProtectedRoute'; 
+import { LoginProtectRoute, PayProtectRoute } from './components/restrictRouting/ProtectedRoute'; 
 
 function App() {
   return (
@@ -26,48 +26,55 @@ function App() {
         <Route path="/landing" element={<Landing />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/payment" element={<Payment />} />
         <Route path="/aboutus" element={<AboutUs />} />
 
         {/*Protected Routes */}
         <Route
           path="/homepage"
           element={
-            <ProtectedRoute>
+            <LoginProtectRoute>
               <HomePage />
-            </ProtectedRoute>
+            </LoginProtectRoute>
+          }
+        />
+        <Route
+          path="/payment"
+          element={
+            <LoginProtectRoute>
+              <Payment />
+            </LoginProtectRoute>
           }
         />
         <Route
           path="/interview"
           element={
-            <ProtectedRoute>
+            <PayProtectRoute>
               <Interview />
-            </ProtectedRoute>
+            </PayProtectRoute>
           }
         />
         <Route
           path="/community"
           element={
-            <ProtectedRoute>
+            <LoginProtectRoute>
               <Community />
-            </ProtectedRoute>
+            </LoginProtectRoute>
           }
         />
         <Route
           path="/community/:id"
           element={
-            <ProtectedRoute>
+            <LoginProtectRoute>
               <Post />
-            </ProtectedRoute>
+            </LoginProtectRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
+            <LoginProtectRoute>
               <Profile />
-            </ProtectedRoute>
+            </LoginProtectRoute>
           }
         />
       </Routes>

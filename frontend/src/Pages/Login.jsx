@@ -23,7 +23,8 @@ const Login = () => {
         setError(response.message);
       }
       else {
-        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('user', response.user)
+        localStorage.setItem('token', response.token)
         navigate('/homepage');
       }
     } catch (err) {

@@ -1,15 +1,20 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+export const LoginProtectRoute = ({ children }) => {
+  const notLoggedIn = !localStorage.getItem('user');
   const location = useLocation();
 
-  return isLoggedIn ? (
-    children
-  ) : (
-    <Navigate to="/login" replace state={{ from: location }} />
-  );
+  return notLoggedIn
+  ? ( <Navigate to="/login" replace state={{ from: location }} /> )
+  : (children);
 };
 
-export default ProtectedRoute;
+export const PayProtectRoute = ({ children }) => {
+  const paymentStatus = localStorage.getItem('user').paymentStatus;
+  const location = useLocation();
+
+  return paymentStatus
+  ? (children)
+  : ( <Navigate to="/payment" replace state={{ from: location }} /> );
+};

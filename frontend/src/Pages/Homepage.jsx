@@ -16,12 +16,11 @@ const HomePage = () => {
   const [processingStatus, setProcessingStatus] = useState('');
   const [progress, setProgress] = useState(0);
   const [toasts, setToasts] = useState([]);
-  const [paymentStatus, setPaymentStatus] = useState(false);
   const navigate = useNavigate();
+  const paymentStatus = localStorage.getItem('user').paymentStatus
 
   useEffect(() => {
     pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-    
   }, []);
   
   // Custom toast function
@@ -96,6 +95,11 @@ const HomePage = () => {
   };
 
   const generateInterviewQuestions = async () => {
+    if (!paymentStatus) {
+      showToast('Not premium user', 'Please complete payment to proceed.', 'warning');
+      return;
+    }
+
     if (keywords.length === 0 && !selectedSubject) {
       showToast('No skills selected', 'Please upload a resume or select a subject first.', 'warning');
       return;
