@@ -1,20 +1,20 @@
 import mongoose from 'mongoose';
 
 const interviewResultSchema = new mongoose.Schema({
-  user: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  skillName: {
-    type: String,
+  skills: {
+    type: [String],
     required: true
   },
-  score: {
-    type: Number, 
+  scores: {
+    type: [Number], 
     required: true
   },
-  keywords: {
+  keyConcepts: {
     type: [String],
     default: []
   },
