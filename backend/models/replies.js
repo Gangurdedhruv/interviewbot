@@ -15,9 +15,6 @@ const replySchema = new mongoose.Schema({
     votes: {
         type: Number,
         default: 0,
-    },
-    isAccepted: {
-        type: Boolean,
     }
 }, { timestamps: true });
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaSearch, FaThumbsUp, FaComment, FaBookmark, FaTags, FaFilter, FaSort } from 'react-icons/fa';
 import NavBar from '@/components/Navbar'
 import { getAllPosts } from '@/actions/commActions';
