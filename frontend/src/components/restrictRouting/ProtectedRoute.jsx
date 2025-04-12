@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 export const LoginProtectRoute = ({ children }) => {
-  const notLoggedIn = !JSON.parse(localStorage.getItem('user'));
+  const notLoggedIn = !JSON.parse(localStorage.getItem('user') );
   const location = useLocation();
 
   return notLoggedIn
