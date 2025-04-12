@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
 export const LoginProtectRoute = ({ children }) => {
-  const notLoggedIn = !localStorage.getItem('user');
+  const notLoggedIn = !JSON.parse(localStorage.getItem('user'));
   const location = useLocation();
 
   return notLoggedIn
@@ -11,7 +11,7 @@ export const LoginProtectRoute = ({ children }) => {
 };
 
 export const PayProtectRoute = ({ children }) => {
-  const paymentStatus = localStorage.getItem('user').paymentStatus;
+  const paymentStatus = JSON.parse(localStorage.getItem('user')).paymentStatus;
   const location = useLocation();
 
   return paymentStatus

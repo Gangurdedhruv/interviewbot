@@ -17,7 +17,7 @@ const HomePage = () => {
   const [progress, setProgress] = useState(0);
   const [toasts, setToasts] = useState([]);
   const navigate = useNavigate();
-  const paymentStatus = localStorage.getItem('user').paymentStatus
+  const paymentStatus = JSON.parse(localStorage.getItem('user')).paymentStatus
 
   useEffect(() => {
     pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;

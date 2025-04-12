@@ -110,6 +110,23 @@ const CheckoutForm = () => {
       });
   }, []);
 
+  const saveTransac = async(paymentObj) => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    await fetch('http://localhost:5000/api/payment/save-transac', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: user._id,
+        amount: paymentObj.amount,
+        paymentId: paymentObj.id,
+        status: paymentObj.status
+      }),
+    })
+    localStorage.setItem('user', JSON.stringify({...user, paymentStatus:true}))
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     
@@ -136,6 +153,7 @@ const CheckoutForm = () => {
         setPaymentStatus('error');
       } else if (paymentIntent.status === 'succeeded') {
         console.log('[PaymentIntent]', paymentIntent);
+        await saveTransac(paymentIntent);
         setPaymentStatus('success');
       } else {
         setErrorMessage(`Payment status: ${paymentIntent.status}. Please contact support.`);
