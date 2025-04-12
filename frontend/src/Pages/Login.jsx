@@ -23,7 +23,7 @@ const Login = () => {
         setError(response.message);
       }
       else {
-        localStorage.setItem('user', response.user)
+        localStorage.setItem('user', JSON.stringify(response.user))
         localStorage.setItem('token', response.token)
         navigate('/homepage');
       }

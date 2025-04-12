@@ -45,7 +45,7 @@ const Registration = () => {
         setError(response.message);
       }
       else {
-        navigate('/homepage');
+        navigate('/login');
       }
     } catch (err) {
       console.error(err)
