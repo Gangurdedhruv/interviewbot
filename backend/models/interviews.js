@@ -15,13 +15,13 @@ const interviewResultSchema = new mongoose.Schema({
     required: true
   },
   keyConcepts: {
-    type: [String],
+    type: [[String]],
     default: []
   },
-  completedAt: {
-    type: Date,
-    default: Date.now
-  }
+  // completedAt: {
+  //   type: Date,
+  //   default: Date.now
+  // }
 }, {
   timestamps: true
 });
