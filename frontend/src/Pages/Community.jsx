@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaThumbsUp, FaComment, FaBookmark, FaTags, FaFilter, FaSort } from 'react-icons/fa';
-import NavBar from '@/components/Navbar'
+import { FaSearch, FaThumbsUp, FaComment, FaBookmark, FaTags } from 'react-icons/fa';
 import { getAllPosts } from '@/actions/commActions';
 
 const Community = () => {
@@ -189,9 +188,6 @@ const Community = () => {
                                     <div className="fw-bold">{post.replycount}</div>
                                     <div className="small text-secondary">answers</div>
                                 </div>
-                                    <div className="p-2">
-                                    <div className="small text-secondary">{post.views} views</div>
-                                </div>
                             </div>
                             
                             {/* Content Column */}
@@ -209,11 +205,9 @@ const Community = () => {
                                     </span>
                                     ))}
                                 </div>
-                                <div className="d-flex justify-content-end align-items-end">
-                                    <div className="small text-secondary">
-                                        <span className="me-2">asked {post.updatedAt}</span>
-                                        <span className="fw-medium">{post.userId}</span>
-                                    </div>
+                                <div className="d-flex justify-content-between small text-secondary mt-2">
+                                    <span className="me-2">{new Date(post.updatedAt).toLocaleString()}</span>
+                                    <span className="fw-medium">asked by {post.userId}</span>
                                 </div>
 
                                 {/* Mobile stats bar (visible on small screens) */}
