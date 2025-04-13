@@ -27,14 +27,11 @@ const posts = dummyPosts.map(post => ({
     replycount: post.replycount,
     tags: post.tags,
     votes: post.votes,
-    userId: post.userId,
     replies: []
 }))
 const replies = dummyReplies.map(reply => ({
     content: reply.content,
     votes: reply.votes,
-    isAccepted: reply.isAccepted,
-    userId: reply.userId,
 }))
 
 try {

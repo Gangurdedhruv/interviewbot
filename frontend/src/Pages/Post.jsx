@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FaThumbsUp, FaBookmark, FaShare, FaArrowLeft, FaReply, FaUser } from 'react-icons/fa';
-import NavBar from '@/components/Navbar';
+import { FaThumbsUp, FaBookmark, FaShare, FaArrowLeft, FaUser } from 'react-icons/fa';
 import { getAllRepliesOfPost, getPostById } from '@/actions/commActions';
 
-// API endpoints in your Express server:
-// POST /api/posts/:id/replies - to add a new reply
-// POST /api/replies/:id/vote - to vote on a reply
 const Post = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const [post, setPost] = useState(null);
   const [replies, setReplies] = useState([]);
   const [newReply, setNewReply] = useState('');
@@ -43,6 +40,7 @@ const Post = () => {
       }
     };
     loadPostData();
+    setUser(JSON.parse(localStorage.getItem('user')))
   }, [id, navigate]);
 
   const handleSubmitReply = (e) => {
@@ -54,12 +52,9 @@ const Post = () => {
 
     // Create a new reply object
     const newReplyObj = {
-      _id: Date.now(),
       content: newReply,
-      userId: 'currentUser', // In a real app, get from user authentication
-      date: 'just now', //remove while sending
-      votes: 0,
-      isAccepted: false
+      userId: user._id,
+      votes: 0
     };
 
     // In a real app, send to backend API
@@ -181,14 +176,9 @@ const Post = () => {
               
               {/* Post stats and actions */}
               <div className="d-flex justify-content-between align-items-center border-top pt-3">
-                <div className="d-flex align-items-center gap-3">
-                  <div className="d-flex align-items-center">
-                    <FaThumbsUp className="text-secondary me-1" />
-                    <span className="text-secondary">{post.votes}</span>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <span className="text-secondary">{post.views} views</span>
-                  </div>
+                <div className="d-flex align-items-center">
+                  <FaThumbsUp className="text-secondary me-1" />
+                  <span className="text-secondary">{post.votes}</span>
                 </div>
                 <div className="d-flex align-items-center gap-3">
                   <button className="btn btn-sm btn-outline-secondary">
@@ -201,11 +191,9 @@ const Post = () => {
               </div>
               
               {/* Post author */}
-              <div className="d-flex justify-content-end align-items-center mt-3">
-                <div className="small text-secondary">
-                  <span className="me-2">asked {post.updatedAt}</span>
-                  <span className="fw-medium">{post.userId}</span>
-                </div>
+              <div className="d-flex justify-content-between align-items-center small text-secondary mt-3">
+                <span className="me-2">{new Date(post.updatedAt).toLocaleString()}</span>
+                <span className="fw-medium">asked by {post.userId}</span>
               </div>
             </div>
           </div>
@@ -214,7 +202,7 @@ const Post = () => {
           <div className="card">
             <div className="card-header d-flex justify-content-between align-items-center">
               <h2 className="h5 mb-0">{replies.length} Answers</h2>
-              <div className="dropdown">
+              {/* <div className="dropdown">
                 <button className="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   Sort by
                 </button>
@@ -223,7 +211,7 @@ const Post = () => {
                   <li><button className="dropdown-item">Newest</button></li>
                   <li><button className="dropdown-item">Oldest</button></li>
                 </ul>
-              </div>
+              </div> */}
             </div>
             <div className="card-body p-0">
               {replies.length > 0 ? (
@@ -251,23 +239,13 @@ const Post = () => {
                         {/* Reply content */}
                         <div className="flex-grow-1">
                           <div className="mb-3">
-                            {reply.isAccepted && (
-                              <div className="badge bg-success mb-2">Accepted Answer</div>
-                            )}
                             <p>{reply.content}</p>
                           </div>
                           
                           {/* Reply metadata */}
-                          <div className="d-flex justify-content-between align-items-center">
-                            <div className="d-flex gap-2">
-                              <button className="btn btn-sm btn-link text-decoration-none">
-                                <FaReply className="me-1" /> Reply
-                              </button>
-                            </div>
-                            <div className="small text-secondary">
-                              <span className="me-2">answered {reply.updatedAt}</span>
-                              <span className="fw-medium">{reply.userId}</span>
-                            </div>
+                          <div className="d-flex justify-content-between align-items-center small text-secondary">
+                            <span className="me-2">{new Date(reply.updatedAt).toLocaleString()}</span>
+                            <span className="fw-medium">answered by {reply.userId}</span>
                           </div>
                         </div>
                       </div>
@@ -301,7 +279,7 @@ const Post = () => {
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
                   <small className="text-secondary">
-                    <FaUser className="me-1" /> Posting as <span className="fw-medium">currentUser</span>
+                    <FaUser className="me-1" /> Posting as <span className="fw-medium">{user.name}</span>
                   </small>
                   <button 
                     type="submit" 

@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../CSS/styles.css';
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar'; 
 import Registration from "./Pages/registration";
@@ -78,6 +78,7 @@ function App() {
             </LoginProtectRoute>
           }
         />
+        <Route path="*" element={<Navigate to={"/"}/>} />
       </Routes>
       <Footer />
     </>

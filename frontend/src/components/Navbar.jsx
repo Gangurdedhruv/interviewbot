@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaUser, FaClipboard, FaUsers, FaCreditCard, FaLaptopCode, FaSignOutAlt, FaTachometerAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const navigate = useNavigate();
+    const [isLoggedIn,setIsLoggedIn] = useState(false)
     
+    useEffect(() => {
+        setIsLoggedIn(localStorage.getItem('user')!==null)
+    },[dropdownOpen])
+
     const handleLogout = () => {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         setDropdownOpen(false)
+        setIsLoggedIn(false)
         navigate('/login');
     };
 
@@ -57,6 +63,8 @@ const NavBar = () => {
                                         <FaTachometerAlt className="me-2" /> Dashboard
                                     </a>
                                 </li>
+                                {isLoggedIn ?
+                                <>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li>
                                     <button 
@@ -66,6 +74,8 @@ const NavBar = () => {
                                         <FaSignOutAlt className="me-2" /> Log Out
                                     </button>
                                 </li>
+                                </>
+                                : null}
                             </ul>
                         </li>
                     </ul>
