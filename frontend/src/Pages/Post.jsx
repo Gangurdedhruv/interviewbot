@@ -58,8 +58,7 @@ const Post = () => {
       content: newReply,
       userId: 'currentUser', // In a real app, get from user authentication
       date: 'just now', //remove while sending
-      votes: 0,
-      isAccepted: false
+      votes: 0
     };
 
     // In a real app, send to backend API
@@ -251,9 +250,6 @@ const Post = () => {
                         {/* Reply content */}
                         <div className="flex-grow-1">
                           <div className="mb-3">
-                            {reply.isAccepted && (
-                              <div className="badge bg-success mb-2">Accepted Answer</div>
-                            )}
                             <p>{reply.content}</p>
                           </div>
                           

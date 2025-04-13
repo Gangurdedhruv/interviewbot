@@ -1,50 +1,34 @@
 [
     {
         "content": "The most important React hooks for interviews are useState, useEffect, useContext, and useReducer. useState is for managing component state, useEffect for side effects, useContext for accessing context, and useReducer for complex state logic.",
-        "userId": "67d880612c9b28aee1907614",
-        "votes": 12,
-        "isAccepted": true
+        "votes": 12
     },
     {
         "content": "I would add useCallback and useMemo to that list. They are crucial for optimizing performance in React applications and often come up in interviews when discussing performance optimization.",
-        "userId": "67d87ec4832d64da5aef901f",
-        "votes": 8,
-        "isAccepted": false
+        "votes": 8
     },
     {
         "content": "Don\"t forget about useRef! It\"s essential for accessing DOM elements directly and persisting values without causing re-renders. I\"ve been asked about this in several interviews.",
-        "userId": "67d880cf486903751881e60a",
-        "votes": 5,
-        "isAccepted": false
+        "votes": 5
     },
     {
         "content": "For AWS Solution Architect, focus on the core services: EC2, S3, VPC, IAM, RDS, and DynamoDB. Know when to use which service and how they integrate. Expect scenario questions about designing resilient, scalable architectures.",
-        "userId": "67d880612c9b28aee1907614",
-        "votes": 9,
-        "isAccepted": true
+        "votes": 9
     },
     {
         "content": "Make sure you understand serverless architecture well - Lambda, API Gateway, etc. Cost optimization questions are common too. Be ready to explain when to use auto-scaling groups vs. containers.",
-        "userId": "67d87ec4832d64da5aef901f",
-        "votes": 7,
-        "isAccepted": false
+        "votes": 7
     },
     {
         "content": "Common Python interview questions include array manipulation, string operations, and tree traversals. Practice implementing sorting algorithms, linked list operations, and dynamic programming problems.",
-        "userId": "67d9bb816ced1ef0d34564f4",
-        "votes": 15,
-        "isAccepted": true
+        "votes": 15
     },
     {
         "content": "I find it helpful to explain SQL joins using Venn diagrams. An INNER JOIN is the intersection of two tables, a LEFT JOIN keeps all records from the left table plus matching records from the right, and so on.",
-        "userId": "67d880cf486903751881e60a",
-        "votes": 8,
-        "isAccepted": true
+        "votes": 8
     },
     {
         "content": "Andrew Ng\"s Machine Learning course on Coursera is excellent for fundamentals. For interview prep specifically, try \"Machine Learning Interviews\" by Chip Huyen and \"Cracking the Machine Learning Interview\" by Nitin Jain.",
-        "userId": "67d9bb816ced1ef0d34564f4",
-        "votes": 14,
-        "isAccepted": true
+        "votes": 14
     }
 ]
