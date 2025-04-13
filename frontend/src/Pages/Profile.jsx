@@ -164,17 +164,6 @@ const Profile = () => {
           </div>
         )}
       </div>
-
-      <div className="ms-auto" style={{paddingRight:'120px'}} >
-        <button 
-          className="btn btn-outline-danger"
-          onClick={() => {
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
-            navigate('/login'); }}>
-          Log Out
-        </button>
-      </div>
     </div>
   );
 };

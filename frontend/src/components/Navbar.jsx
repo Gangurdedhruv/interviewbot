@@ -42,8 +42,7 @@ const NavBar = () => {
                         </li>
                         <li className="nav-item ms-3 dropdown">
                             <a 
-                                className="nav-link dropdown-toggle" 
-                                href="#" 
+                                className="nav-link dropdown-toggle"
                                 id="profileDropdown" 
                                 role="button"
                                 onClick={() => setDropdownOpen(!dropdownOpen)}
