@@ -15,6 +15,7 @@ import Community from './Pages/community';
 import Profile from './Pages/profile';
 import Post from './Pages/post';
 import AboutUs from './Pages/AboutUs';
+import Footer from './components/Footer'
 import { LoginProtectRoute, PayProtectRoute } from './components/restrictRouting/ProtectedRoute'; 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }
