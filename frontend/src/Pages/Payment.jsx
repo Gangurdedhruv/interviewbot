@@ -284,12 +284,6 @@ const PaymentPage = () => {
           </div>
         </div>
       </div>
-      
-      <footer className="bg-white py-4 border-top mt-auto">
-        <div className="container text-center text-muted">
-          <small>© 2025 PrepNexus. All rights reserved.</small>
-        </div>
-      </footer>
     </div>
   );
 };

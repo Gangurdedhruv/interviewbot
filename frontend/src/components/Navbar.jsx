@@ -9,6 +9,7 @@ const NavBar = () => {
     const handleLogout = () => {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
+        setDropdownOpen(false)
         navigate('/login');
     };
 
@@ -31,19 +32,18 @@ const NavBar = () => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="community">
+                            <a className="nav-link" href="/community">
                                 <FaUsers className="me-1" /> Community
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="payment">
+                            <a className="nav-link" href="/payment">
                                 <FaCreditCard className="me-1" /> Payment
                             </a>
                         </li>
                         <li className="nav-item ms-3 dropdown">
                             <a 
-                                className="nav-link dropdown-toggle" 
-                                href="#" 
+                                className="nav-link dropdown-toggle"
                                 id="profileDropdown" 
                                 role="button"
                                 onClick={() => setDropdownOpen(!dropdownOpen)}

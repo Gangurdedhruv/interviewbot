@@ -37,8 +37,6 @@ const Login = () => {
 
   return (
     <div className="min-vh-100 d-flex flex-column">
-
-
       <div className="flex-grow-1 d-flex align-items-center bg-light">
         <div className="container py-5">
           <div className="row justify-content-center">
@@ -127,12 +125,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-
-      <footer className="py-3 bg-white border-top">
-        <div className="container text-center text-muted">
-          <small>© 2025 PrepNexus. All rights reserved.</small>
-        </div>
-      </footer>
     </div>
   );
 };

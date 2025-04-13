@@ -226,12 +226,6 @@ const Registration = () => {
           </div>
         </div>
       </div>
-
-      <footer className="py-3 bg-white border-top">
-        <div className="container text-center text-muted">
-          <small>© 2025 PrepNexus. All rights reserved.</small>
-        </div>
-      </footer>
     </div>
   );
 };
