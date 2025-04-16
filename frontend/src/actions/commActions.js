@@ -12,7 +12,7 @@ export const getAllPosts = async () => {
         return console.log("Error getting posts:", err);
     }
 }
-
+    
 export const getPostById = async (id) => {
     try {
         const response = await fetch(`http://localhost:5000/api/comm/get-post-by-id/${id}`, {

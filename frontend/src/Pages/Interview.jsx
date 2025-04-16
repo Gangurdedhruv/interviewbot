@@ -21,7 +21,7 @@ const InterviewChatPage = () => {
   const [isGeneratingQuestions, setIsGeneratingQuestions] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState('');
-
+  
   const [showCodeConsole, setShowCodeConsole] = useState(false);
   const [codeValue, setCodeValue] = useState('');
   const [codeLanguage, setCodeLanguage] = useState('javascript');
@@ -355,7 +355,7 @@ const InterviewChatPage = () => {
     setTranscript('');
   };
   
-  // Function to move to the next question without answering current one
+  // Function to move to the next question without answering current one                                           
   const skipQuestion = () => {
     // Add skip message
     setMessages(prev => [...prev, { 

@@ -6,7 +6,7 @@ import { connection } from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
 import commRoutes from './routes/commRoutes.js'
 import payRoutes from './routes/payment.js'
-// import interviewRoutes from './routes/interviewRoutes.js';
+import famousInterviewRoutes from './routes/famousInterviewRoutes.js';
 
 
 dotenv.config();
@@ -19,6 +19,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes)
 app.use('/api/comm', commRoutes)
 app.use('/api/payment', payRoutes)
+app.use('/api/interviewQuestions', famousInterviewRoutes);
 // app.use('/api/interviews', interviewRoutes);
 app.get("/", (req, res)=>{
     res.send("server is ready");

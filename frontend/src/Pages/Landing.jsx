@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserPlus, FaSignInAlt, FaLaptopCode } from 'react-icons/fa';
 
 const Landing= () => {
   return (
