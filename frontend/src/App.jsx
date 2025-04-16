@@ -17,6 +17,8 @@ import Post from './Pages/post';
 import AboutUs from './Pages/AboutUs';
 import Footer from './components/Footer'
 import { LoginProtectRoute, PayProtectRoute } from './components/restrictRouting/ProtectedRoute'; 
+import FamousInterviewQuestions from './Pages/FamousInterview';
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/famousInterviewQuestions" element={<FamousInterviewQuestions />} />
 
         {/*Protected Routes */}
         <Route

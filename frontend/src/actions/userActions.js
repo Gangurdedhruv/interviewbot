@@ -5,7 +5,7 @@ export const registerUser = async (userDetails) => {
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
-            },
+            },      
             body: JSON.stringify(userDetails),
         })
         return response.json()
