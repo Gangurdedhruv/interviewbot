@@ -46,12 +46,18 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "Password is required."],
-        
     },
     paymentStatus: {
         type: Boolean,
         default: false
     },
+    // Add these new fields for password reset
+    resetPasswordToken: {
+        type: String
+    },
+    resetPasswordExpires: {
+        type: Date
+    }
 }, {
     timestamps: true
 });
